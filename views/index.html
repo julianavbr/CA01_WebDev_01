@@ -59,13 +59,12 @@
                             <option value="1">Assorted Chocolates</option>
                             <option value="2">Gifts and Others</option>
                         </select>
-                        <input class="form-control mt-3" type="text" name="item" placeholder="Item">
-                        <input class="form-control mt-3" type="text" name="price" placeholder="Price">
-                        <!-- <button type="submit" class="btn btn-block mt-3"color= "#4CAF50">Submit</button> -->
-                        <button type="submit" class="btn btn-brown btn-block mt-3">Add a Product</button>
+                        <input class="form-control mt-3" type="text" name="item" placeholder="Chocolate Description">
+                        <input class="form-control mt-3" type="text" name="price" placeholder="Price (in Euros)">
+                        <button type="submit" class="btn btn-outline-dark btn-block mt-3" data-mdb-ripple-color="dark">Add a Product</button>
                     </div>
                 </form>
-                <button id="delete" class="btn btn-danger btn-block mt-3">Delete</button>
+                <button id="delete" class="btn btn-outline-danger btn-block mt-3" data-mdb-ripple-color="danger">Delete</button>
                 <p class="text-muted text-center">Please select the product before deleting it.</p>
                 <form>
                     <div class="input-group">
@@ -75,11 +74,11 @@
                         <input type="text" class="form-control" aria-label="Total" name="txtBillAmt">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <input type="checkbox" id="showVeg" aria-label="Checkbox for following text input">
+                                <input type="checkbox" id="showGlu" aria-label="Checkbox for Gluten Free options">
                             </div>
                         </div>
-                        <input class="btn btn-block btn-secondary mt-2" type="button" name="btnTot"
-                            value="Total" id="calcBill">
+                         <input class="btn btn-block btn-outline-success mt-2" data-mdb-ripple-color="success" type="button" name="btnTot" id="calcTotal"
+                            value="Total">
                     </div>
                 </form>
             </div>
@@ -96,11 +95,11 @@
     <script>
         window.addEventListener("load", function() {
             document.forms[1].txtBillAmt.value = sumTotal('menuTable');
-            document.querySelector("#calcBill").addEventListener("click", function() {
+            document.querySelector("#calcTotal").addEventListener("click", function() {
                 document.forms[1].txtBillAmt.value = sumTotal('menuTable');
             });
-            document.querySelector("#showVeg").addEventListener("click", function() {
-                highlightVegetarian('menuTable', this.checked);
+            document.querySelector("#showGlu").addEventListener("click", function() {
+                isGlutenFree('menuTable', this.checked);
             });
         });
     </script>

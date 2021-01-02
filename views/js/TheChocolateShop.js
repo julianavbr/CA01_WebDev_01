@@ -19,21 +19,23 @@ function sumTotal(idMenuTable) {
     return Math.round(fBillTotal * 100.0) / 100.0;
 };
 
-function highlightVegetarian(idTable, bShowVeg) {
-    // if bShowVeg is true, then we're highlighting vegetarian
-    //	meals, otherwise we're unhighlighting them.
+function isGlutenFree(idTable, bShowGlu) {
+    // if bShowGlu is true, then we're highlighting GlutenFree 
+    //	options, otherwise we're unhighlighting them.
     var i = 0;
     var oTable = document.getElementById(idTable);
     var oTBODY = oTable.getElementsByTagName('tbody')[0];
     var aTRs = oTBODY.getElementsByTagName('tr');
     // walk through each of the table rows and see if it has a 
-    // "vegetarian" attribute on it.
+    // "GlutenFree" attribute on it.
     for (i = 0; i < aTRs.length; i++) {
-        if (aTRs[i].getAttribute('vegetarian') == "true") {
-            if (bShowVeg) {
-                aTRs[i].style.backgroundColor = "lightGreen";
+        if (aTRs[i].getAttribute('glutenfree') == "true") {
+            if (bShowGlu) {
+                aTRs[i].style.backgroundColor = "#5b3416";
+                aTRs[i].style.color = "#fce295";
             } else {
                 aTRs[i].style.backgroundColor = "";
+                aTRs[i].style.color = "black";
             };
         };
     };

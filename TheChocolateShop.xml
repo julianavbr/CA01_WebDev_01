@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <chocolatedescs>
   <section name="Chocolate Bars">
-    <opt vegetarian="true">
+    <opt glutenfree="true">
       <desc>Milk Chocolate</desc>
       <prc>2.95</prc>
     </opt>
-    <opt>
+    <opt glutenfree="true">
       <desc>Dark Chocolate (70%)</desc>
       <prc>2.95</prc>
     </opt>
@@ -21,7 +21,7 @@
       <desc>Milk Chocolate with Orange</desc>
       <prc>2.95</prc>
     </opt>
-    <opt>
+    <opt glutenfree="true">
       <desc>Dark Salted Caramel</desc>
       <prc>2.95</prc>
     </opt>
@@ -45,17 +45,13 @@
       <desc>White Chocolate with Coconut and Almond</desc>
       <prc>2.95</prc>
     </opt>
-    <opt>
-      <desc/>
-      <prc/>
-    </opt>
   </section>
   <section name="Assorted Chocolates">
-    <opt>
+    <opt glutenfree="true">
       <desc>Blueberry Panna Cotta</desc>
       <prc>2.30</prc>
     </opt>
-    <opt>
+    <opt glutenfree="true">
       <desc>Lemon and Almond Parfait</desc>
       <prc>2.30</prc>
     </opt>
@@ -95,7 +91,7 @@
       <desc>White Chocolate Flake</desc>
       <prc>2.30</prc>
     </opt>
-    <opt>
+    <opt glutenfree="true">
       <desc>Dark Chocolate Flake (75%) </desc>
       <prc>2.30</prc>
     </opt>
@@ -109,7 +105,7 @@
       <desc>White Chocolate Mix (Box with 12)</desc>
       <prc>19.50</prc>
     </opt>
-    <opt>
+     <opt glutenfree="true">
       <desc>Assorted Box (Box with 12)</desc>
       <prc>19.50</prc>
     </opt>
