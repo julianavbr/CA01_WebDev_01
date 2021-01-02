@@ -31,7 +31,7 @@
                                         <xsl:value-of select="boolean(@vegetarian)" />
                                     </xsl:attribute>
                                     <td align="center">
-                                        <input name="desc0" type="checkbox" />
+                                        <input name="desc0" type="checkbox"/>
                                     </td>
                                     <td>
                                         <xsl:value-of select="desc" />
@@ -48,7 +48,7 @@
                     <p>
                         <input type="button" name="btnCalcBill" value="Total" id="calcBill" />
                 Total: €
-                <input type="text" name="txtBillAmt" /><input type="checkbox" name="cbOpts" value="isVeg" id="showVeg" /><label for="showVeg">Highlight Vegetarian Meals</label></p>
+                <input type="text" name="txtBillAmt" /></p>
                 </form>
             </body>
         </html>
