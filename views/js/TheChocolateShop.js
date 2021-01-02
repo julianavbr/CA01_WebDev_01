@@ -1,6 +1,6 @@
 // returns a number that represents the sum of all the selected menu
 // item prices.
-function calculateBill(idMenuTable) {
+function sumTotal(idMenuTable) {
     var fBillTotal = 0.0;
     var i = 0;
     var aCBTags = document.querySelectorAll('input');

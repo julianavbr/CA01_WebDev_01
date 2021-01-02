@@ -62,7 +62,7 @@ router.post('/post/json', function (req, res) {
         xmlFileToJs('TheChocolateShop.xml', function (err, result) {
             if (err) throw (err);
             
-            result.chocolatedescs.section[obj.sec_n].opt.push({'desc': obj.item, 'prc': obj.price});
+            result.chocolatedescs.section[obj.main_groups].opt.push({'desc': obj.item, 'prc': obj.price});
 
 
             console.log(JSON.stringify(result, null, "  "));

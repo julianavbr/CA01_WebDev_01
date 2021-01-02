@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <chocolatedescs>
   <section name="Chocolate Bars">
-    <opt vegetarian = "true">
+    <opt vegetarian="true">
       <desc>Milk Chocolate</desc>
       <prc>2.95</prc>
     </opt>
@@ -44,6 +44,10 @@
     <opt>
       <desc>White Chocolate with Coconut and Almond</desc>
       <prc>2.95</prc>
+    </opt>
+    <opt>
+      <desc/>
+      <prc/>
     </opt>
   </section>
   <section name="Assorted Chocolates">
