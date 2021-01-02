@@ -9,17 +9,13 @@
             <script type="text/javascript" src="js/TheChocolateShop.js">x</script>
         </head>
             <body>
-                <h2>The Chocolate Shop</h2>
-                <p>Select your opts from the menu below. To calculate the amount of the bill, click the Calculate Bill button. Check the "Highlight Vegetarian Meals" box to highlight vegetarian dishes.</p>
+                <p>Please select the desired options below. To calculate the total, please click the button Total.</p>
                 <table id="menuTable" border="1" class="indent">
                     <thead>
-                        <tr>
-                            <th colspan="3">The Chocolate Shop's Online Shop</th>
-                        </tr>
-                        <tr>
+                           <tr>
                             <th>Select</th>
-                            <th>Description</th>
-                            <th>Price</th>
+                            <th>Chocolate Type</th>
+                            <th>Price (in Euro)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,7 +46,7 @@
                 </table>
                 <form class="indent">
                     <p>
-                        <input type="button" name="btnCalcBill" value="Calculate Bill" id="calcBill" />
+                        <input type="button" name="btnCalcBill" value="Total" id="calcBill" />
                 Total: €
                 <input type="text" name="txtBillAmt" /><input type="checkbox" name="cbOpts" value="isVeg" id="showVeg" /><label for="showVeg">Highlight Vegetarian Meals</label></p>
                 </form>
