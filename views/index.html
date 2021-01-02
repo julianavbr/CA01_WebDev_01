@@ -96,9 +96,9 @@
     <script src="js/TheChocolateShop.js"></script>
     <script>
         window.addEventListener("load", function() {
-            document.forms[1].txtBillAmt.value = calculateBill('menuTable');
+            document.forms[1].txtBillAmt.value = totalIt('menuTable');
             document.querySelector("#calcBill").addEventListener("click", function() {
-                document.forms[1].txtBillAmt.value = calculateBill('menuTable');
+                document.forms[1].txtBillAmt.value = totalIt('menuTable');
             });
             document.querySelector("#showVeg").addEventListener("click", function() {
                 highlightVegetarian('menuTable', this.checked);
