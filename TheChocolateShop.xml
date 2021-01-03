@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!-- Code adapted from the code developed on class by Mikhail @Interactive Web Applications. -->
-
-
 <chocolatedescs>
   <section name="Chocolate Bars">
     <opt glutenfree="true">

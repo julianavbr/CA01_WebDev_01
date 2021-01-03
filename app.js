@@ -37,23 +37,23 @@ router.get('/', function(req, res) {
     res.render('index');
 
 });
-
+// To read the files
 router.get('/get/html', function(req, res) {
 
     res.writeHead(200, {'Content-Type': 'text/html'}); //We are responding to the client that the content served back is HTML and the it exists (code 200)
 
-    var xml = fs.readFileSync('TheChocolateShop.xml', 'utf8'); //We are reading in the XML file
-    var xsl = fs.readFileSync('TheChocolateShop.xsl', 'utf8'); //We are reading in the XSL file
+    var xml = fs.readFileSync('TheChocolateShop.xml', 'utf8'); //Read XML
+    var xsl = fs.readFileSync('TheChocolateShop.xsl', 'utf8'); //Read XSL
 
-    var doc = xmlParse(xml); //Parsing our XML file
-    var stylesheet = xmlParse(xsl); //Parsing our XSL file
+    var doc = xmlParse(xml); //Parse xml
+    var stylesheet = xmlParse(xsl); //Parse xsl
 
-    var result = xsltProcess(doc, stylesheet); //This does our XSL Transformation
+    var result = xsltProcess(doc, stylesheet); //The result file
 
-    res.end(result.toString()); //Send the result back to the user, but convert to type string first
-
+    res.end(result.toString()); //Print to the user
 });
 
+//to add new information to the server
 router.post('/post/json', function (req, res) {
 
     function appendJSON(obj) {
@@ -65,10 +65,11 @@ router.post('/post/json', function (req, res) {
             if (err) throw (err);
      var checkNum = obj.price;
      var checkDes = obj.item;
-     checkNum = sanitiseInput(checkNum);
-     checkDes = sanitiseInput(checkDes);
+     checkNum = sanitiseInput(checkNum); //to sanitise the number
+     checkDes = sanitiseInput(checkDes); //to sanitise the description
+     //to check if it is a number, otherwise it won't include the file
      if(isNumber(checkNum)){
-            result.chocolatedescs.section[obj.main_groups].opt.push({'desc': checkDes, 'prc': obj.price});
+            result.chocolatedescs.section[obj.main_groups].opt.push({'desc': checkDes, 'prc': checkNum});
 
             console.log(JSON.stringify(result, null, "  "));
 
@@ -88,7 +89,7 @@ router.post('/post/json', function (req, res) {
 
 });
 
-
+//to delete the entry
 router.post('/post/delete', function (req, res) {
 
     function deleteJSON(obj) {
@@ -113,17 +114,17 @@ router.post('/post/delete', function (req, res) {
     res.redirect('back');
 
 });
-
-function isNumber(str) {
-
-  if (typeof str != "string") return false // we only process strings!  
-  return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-         !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+//to check if the input is a number
+function isNumber(input) {
+  if (typeof input != "string") return false 
+  return !isNaN(input) && !isNaN(parseFloat(input)) // clean and check if the input is a number
 }
+//to check and remove illegal char from the input
 function sanitiseInput(input){
-    input = input.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
+    input = input.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,""); 
     return input.trim();
 }
+//added the port 5501 to talk to my server
 server.listen(process.env.PORT || 5501, process.env.IP || "0.0.0.0", function () {
     var addr = server.address();
     console.log("Server listnening at", addr.address + ":" + addr.port);

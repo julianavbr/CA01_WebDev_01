@@ -1,55 +1,52 @@
 // Code adapted from the code developed on class by Mikhail @Interactive Web Applications.
-// returns a number that represents the sum of all the selected menu
-// item prices.
+
+// function to find a parent from certain types
+function getParentTag(objNode, sParentType) {
+    var objPar = objNode.parentNode;
+    while (objPar) {
+        if (objPar.nodeName == sParentType)
+            return objPar;
+        objPar = objPar.parentNode;
+    };
+    return objPar;
+};
+
+//returns the sum of all selected items
 function sumTotal(idMenuTable) {
-    var fBillTotal = 0.0;
+    var sumT = 0.0;
     var i = 0;
-    var aCBTags = document.querySelectorAll('input');
-    for (i = 0; i < aCBTags.length; i++) {
-        // is this menu item selected? it is if the checkbox is checked
-        if (aCBTags[i].checked) {
-            // get the checkbox' parent table row
-            var oTR = getParentTag(aCBTags[i], 'TR');
-            // retrieve the price from the price column, which is the third column in the table
-            var oTDPrice = oTR.getElementsByTagName('TD')[2];
-            // the first child text node of the column contains the price
-            fBillTotal += parseFloat(oTDPrice.firstChild.data);
+    var optList = document.querySelectorAll('input');
+    for (i = 0; i < optList.length; i++) {
+              if (optList[i].checked) {
+            var parent = getParentTag(optList[i], 'TR');
+            // get the third column(price)
+            var objPrice = parent.getElementsByTagName('TD')[2];
+            // firstChild = price
+            sumT += parseFloat(objPrice.firstChild.data);
         };
     };
     // return the price as a decimal number with 2 decimal places
-    return Math.round(fBillTotal * 100.0) / 100.0;
+    return sumT.toFixed(2);
 };
-
+//highlights all the gluten free options
 function isGlutenFree(idTable, bShowGlu) {
-    // if bShowGlu is true, then we're highlighting GlutenFree 
-    //	options, otherwise we're unhighlighting them.
     var i = 0;
-    var oTable = document.getElementById(idTable);
-    var oTBODY = oTable.getElementsByTagName('tbody')[0];
-    var aTRs = oTBODY.getElementsByTagName('tr');
+    var objT = document.getElementById(idTable);
+    var objB = objT.getElementsByTagName('tbody')[0];
+    var eachElement = objB.getElementsByTagName('tr');
     // walk through each of the table rows and see if it has a 
     // "GlutenFree" attribute on it.
-    for (i = 0; i < aTRs.length; i++) {
-        if (aTRs[i].getAttribute('glutenfree') == "true") {
+    for (i = 0; i < eachElement.length; i++) {
+        if (eachElement[i].getAttribute('glutenfree') == "true") {
             if (bShowGlu) {
-                aTRs[i].style.backgroundColor = "#5b3416";
-                aTRs[i].style.color = "#fce295";
+                eachElement[i].style.backgroundColor = "#5b3416";
+                eachElement[i].style.color = "#fce295";
             } else {
-                aTRs[i].style.backgroundColor = "";
-                aTRs[i].style.color = "black";
+                eachElement[i].style.backgroundColor = "";
+                eachElement[i].style.color = "#5b3416";
             };
         };
     };
 };
-// Utility function for getting the parent tag of a given tag
-// but only of a certain type (i.e. a TR, a TABLE, etc.)
-function getParentTag(oNode, sParentType) {
-    var oParent = oNode.parentNode;
-    while (oParent) {
-        if (oParent.nodeName == sParentType)
-            return oParent;
-        oParent = oParent.parentNode;
-    };
-    return oParent;
-};
+
 
