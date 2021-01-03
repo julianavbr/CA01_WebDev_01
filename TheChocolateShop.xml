@@ -45,6 +45,26 @@
       <desc>White Chocolate with Coconut and Almond</desc>
       <prc>2.95</prc>
     </opt>
+    <opt>
+      <desc>dfhgjgkhl</desc>
+      <prc>sdfgh</prc>
+    </opt>
+    <opt>
+      <desc>dfghjkl</desc>
+      <prc>dfgh</prc>
+    </opt>
+    <opt>
+      <desc>fgh</desc>
+      <prc>5</prc>
+    </opt>
+    <opt>
+      <desc>sdfghjkl</desc>
+      <prc>4</prc>
+    </opt>
+    <opt>
+      <desc>julisfgnf</desc>
+      <prc>3</prc>
+    </opt>
   </section>
   <section name="Assorted Chocolates">
     <opt glutenfree="true">
@@ -105,7 +125,7 @@
       <desc>White Chocolate Mix (Box with 12)</desc>
       <prc>19.50</prc>
     </opt>
-     <opt glutenfree="true">
+    <opt glutenfree="true">
       <desc>Assorted Box (Box with 12)</desc>
       <prc>19.50</prc>
     </opt>

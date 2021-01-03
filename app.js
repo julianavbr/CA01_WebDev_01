@@ -60,17 +60,24 @@ router.post('/post/json', function (req, res) {
         console.log(obj)
 
         xmlFileToJs('TheChocolateShop.xml', function (err, result) {
+           
             if (err) throw (err);
-            
+     var validatae = obj.price;
+     if(isNumeric(validatae)==false){
+         
+     } else{
             result.chocolatedescs.section[obj.main_groups].opt.push({'desc': obj.item, 'prc': obj.price});
-
 
             console.log(JSON.stringify(result, null, "  "));
 
             jsToXmlFile('TheChocolateShop.xml', result, function(err){
-                if (err) console.log(err);
+              if (err) console.log(err);
+     
+
             });
-        });
+        }
+    });
+    
     };
 
     appendJSON(req.body);
@@ -78,6 +85,7 @@ router.post('/post/json', function (req, res) {
     res.redirect('back');
 
 });
+
 
 router.post('/post/delete', function (req, res) {
 
@@ -103,6 +111,13 @@ router.post('/post/delete', function (req, res) {
     res.redirect('back');
 
 });
+
+function isNumeric(str) {
+   
+  if (typeof str != "string") return false // we only process strings!  
+  return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+         !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+}
 server.listen(process.env.PORT || 5501, process.env.IP || "0.0.0.0", function () {
     var addr = server.address();
     console.log("Server listnening at", addr.address + ":" + addr.port);
