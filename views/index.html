@@ -1,3 +1,4 @@
+<!-- Code adapted from the code developed on class by Mikhail @Interactive Web Applications. -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +6,8 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <!-- <meta name="description" content="">
+    <meta name="author" content=""> -->
 
     <title>The Chocolate Shop</title>
 
@@ -60,7 +61,7 @@
                             <option value="2">Gifts and Others</option>
                         </select>
                         <input class="form-control mt-3" id= "validationdesc" type="text" name="item" placeholder="Chocolate Description" required>
-                        <input class="form-control mt-3" id= "validationprc" type="text" name="price" placeholder="Price (in Euros)" required>
+                        <input class="form-control mt-3" id= "validationprc" type="text" name="price" onsubmit="return errorMsg();" placeholder="Price (in Euros)" required >
                         <button type="submit" class="btn btn-outline-dark btn-block mt-3" data-mdb-ripple-color="dark">Add a Product</button>
                     </div>
                 </form>
@@ -71,7 +72,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">&euro;</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Total" name="txtBillAmt">
+                        <input type="text" class="form-control" aria-label="Total" name="outputTotal">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <input type="checkbox" id="showGlu" aria-label="Checkbox for Gluten Free options">
@@ -92,16 +93,25 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/table.js"></script>
     <script src="js/TheChocolateShop.js"></script>
+    <script src="../app.js"></script>
     <script>
         window.addEventListener("load", function() {
-            document.forms[1].txtBillAmt.value = sumTotal('menuTable');
+            document.forms[1].outputTotal.value = sumTotal('cTable');
             document.querySelector("#calcTotal").addEventListener("click", function() {
-                document.forms[1].txtBillAmt.value = sumTotal('menuTable');
+                document.forms[1].outputTotal.value = sumTotal('cTable');
             });
             document.querySelector("#showGlu").addEventListener("click", function() {
-                isGlutenFree('menuTable', this.checked);
+                isGlutenFree('cTable', this.checked);
             });
         });
+        
+       function errorMsg(){
+           var input = document.getElementById('validationprc').value;
+           if(isNumber(input)==false){
+               document.getElementById('validationprc').innerHTML("Erriyfujg");
+           }
+       } 
+        
     </script>
 </body>
 

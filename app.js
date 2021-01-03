@@ -1,19 +1,20 @@
-var http = require('http'), //This module provides the HTTP server functionalities
-    path = require('path'), //The path module provides utilities for working with file and directory paths
-    express = require('express'), //This module allows this app to respond to HTTP Requests, defines the routing and renders back the required content
-    fs = require('fs'), //This module allows to work witht the file system: read and write files back
-    xmlParse = require('xslt-processor').xmlParse, //This module allows us to work with XML files
-    xsltProcess = require('xslt-processor').xsltProcess, //The same module allows us to utilise XSL Transformations
-    xml2js = require('xml2js'); //This module does XML to JSON conversion and also allows us to get from JSON back to XML
+// Code adapted from the code developed on class by Mikhail @Interactive Web Applications.
+var http = require('http'), //This variable activates the use of the http's features.
+    path = require('path'), //It activates the use of file's locations.
+    express = require('express'), //It allows to receive a reply the requests from http
+    fs = require('fs'), //It activates the reading and writing in files
+    xmlParse = require('xslt-processor').xmlParse, //It activates the integration with xml
+    xsltProcess = require('xslt-processor').xsltProcess, //It activates the integration with xsl Transformation
+    xml2js = require('xml2js'); //It converts XML > JSON > XML
 
-var router = express(); //We set our routing to be handled by Express
-var server = http.createServer(router); //This is where our server gets created
+var router = express(); //Establish the routing with the http
+var server = http.createServer(router); //To create a server
 
-router.use(express.static(path.resolve(__dirname, 'views'))); //We define the views folder as the one where all static content will be served
-router.use(express.urlencoded({extended: true})); //We allow the data sent from the client to be coming in as part of the URL in GET and POST requests
-router.use(express.json()); //We include support for JSON that is coming from the client
+router.use(express.static(path.resolve(__dirname, 'views'))); //Establish that the "Views" folder is where the static content is
+router.use(express.urlencoded({extended: true})); //To use data from the client in requests (GET and POST)
+router.use(express.json()); //To allow the use of JSON
 
-// Function to read in XML file and convert it to JSON
+//XML to JSON
 function xmlFileToJs(filename, cb) {
   var filepath = path.normalize(path.join(__dirname, filename));
   fs.readFile(filepath, 'utf8', function(err, xmlStr) {
@@ -22,7 +23,7 @@ function xmlFileToJs(filename, cb) {
   });
 }
 
-//Function to convert JSON to XML and save it
+// JSON to XML + save file
 function jsToXmlFile(filename, obj, cb) {
   var filepath = path.normalize(path.join(__dirname, filename));
   var builder = new xml2js.Builder();
@@ -62,11 +63,12 @@ router.post('/post/json', function (req, res) {
         xmlFileToJs('TheChocolateShop.xml', function (err, result) {
            
             if (err) throw (err);
-     var validatae = obj.price;
-     if(isNumeric(validatae)==false){
-         
-     } else{
-            result.chocolatedescs.section[obj.main_groups].opt.push({'desc': obj.item, 'prc': obj.price});
+     var checkNum = obj.price;
+     var checkDes = obj.item;
+     checkNum = sanitiseInput(checkNum);
+     checkDes = sanitiseInput(checkDes);
+     if(isNumber(checkNum)){
+            result.chocolatedescs.section[obj.main_groups].opt.push({'desc': checkDes, 'prc': obj.price});
 
             console.log(JSON.stringify(result, null, "  "));
 
@@ -112,11 +114,15 @@ router.post('/post/delete', function (req, res) {
 
 });
 
-function isNumeric(str) {
-   
+function isNumber(str) {
+
   if (typeof str != "string") return false // we only process strings!  
   return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
          !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+}
+function sanitiseInput(input){
+    input = input.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
+    return input.trim();
 }
 server.listen(process.env.PORT || 5501, process.env.IP || "0.0.0.0", function () {
     var addr = server.address();

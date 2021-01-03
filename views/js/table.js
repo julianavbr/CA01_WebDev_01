@@ -1,3 +1,4 @@
+// Code adapted from the code developed on class by Mikhail @Interactive Web Applications.
 function draw_table()
 {
 	$("#results").empty();

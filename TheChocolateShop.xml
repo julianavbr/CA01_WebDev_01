@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Code adapted from the code developed on class by Mikhail @Interactive Web Applications. -->
+
+
 <chocolatedescs>
   <section name="Chocolate Bars">
     <opt glutenfree="true">
@@ -44,26 +47,6 @@
     <opt>
       <desc>White Chocolate with Coconut and Almond</desc>
       <prc>2.95</prc>
-    </opt>
-    <opt>
-      <desc>dfhgjgkhl</desc>
-      <prc>sdfgh</prc>
-    </opt>
-    <opt>
-      <desc>dfghjkl</desc>
-      <prc>dfgh</prc>
-    </opt>
-    <opt>
-      <desc>fgh</desc>
-      <prc>5</prc>
-    </opt>
-    <opt>
-      <desc>sdfghjkl</desc>
-      <prc>4</prc>
-    </opt>
-    <opt>
-      <desc>julisfgnf</desc>
-      <prc>3</prc>
     </opt>
   </section>
   <section name="Assorted Chocolates">

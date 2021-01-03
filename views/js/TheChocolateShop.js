@@ -1,3 +1,4 @@
+// Code adapted from the code developed on class by Mikhail @Interactive Web Applications.
 // returns a number that represents the sum of all the selected menu
 // item prices.
 function sumTotal(idMenuTable) {
